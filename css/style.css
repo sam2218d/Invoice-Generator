@@ -1,0 +1,950 @@
+/* ============================================
+   SARKAR TRAVEL AGENCY — Design System
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+/* ── Design Tokens ── */
+:root {
+  --clr-primary: #1a2a4a;
+  --clr-primary-light: #243b6a;
+  --clr-accent: #1a6b6b;
+  --clr-accent-light: #238f8f;
+  --clr-bg: #f5f7fa;
+  --clr-card: #ffffff;
+  --clr-table-alt: #f0f2f5;
+  --clr-border: #222222;
+  --clr-border-light: #d0d5dd;
+  --clr-text: #1a1a2e;
+  --clr-text-muted: #64748b;
+  --clr-danger: #dc3545;
+  --clr-success: #10b981;
+  --clr-gold: #d4a843;
+  --ff-body: 'Roboto', Arial, sans-serif;
+  --radius: 8px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--ff-body);
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ── Top Navigation Bar ── */
+.top-bar {
+  background: var(--clr-primary);
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.top-bar-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--clr-accent);
+  object-fit: cover;
+}
+
+.top-bar-title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.top-bar-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.top-bar-actions a,
+.top-bar-actions button {
+  color: #ffffff;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  font-family: var(--ff-body);
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.top-bar-actions a:hover,
+.top-bar-actions button:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.4);
+  transform: translateY(-1px);
+}
+
+/* ── Main Container ── */
+.app-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* ── Invoice Card ── */
+.invoice-card {
+  background: var(--clr-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+/* ── Invoice Header ── */
+.invoice-header {
+  background: var(--clr-primary);
+  color: #ffffff;
+  padding: 24px 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--clr-accent);
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.header-logo:hover {
+  transform: scale(1.05);
+  border-color: var(--clr-accent-light);
+}
+
+.header-info {
+  flex: 1;
+}
+
+.agency-name {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.agency-tagline {
+  font-size: 0.85rem;
+  font-weight: 400;
+  opacity: 0.85;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+.header-contact {
+  text-align: right;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.header-contact span {
+  display: block;
+}
+
+.header-contact .label {
+  font-weight: 500;
+  color: var(--clr-accent-light);
+  display: inline;
+}
+
+/* ── GST Invoice Label ── */
+.gst-label-bar {
+  background: var(--clr-accent);
+  color: #ffffff;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ── Customer Info Bar ── */
+.customer-bar {
+  padding: 18px 30px;
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 18px;
+  align-items: end;
+  border-bottom: 2px solid var(--clr-border);
+  background: #fafbfc;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.field-group label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  letter-spacing: 0.8px;
+}
+
+.field-group input,
+.field-group select {
+  border: none;
+  border-bottom: 2px solid var(--clr-border);
+  background: transparent;
+  padding: 4px 2px;
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  color: var(--clr-text);
+  outline: none;
+  transition: var(--transition);
+  min-width: 120px;
+}
+
+.field-group input:focus,
+.field-group select:focus {
+  border-bottom-color: var(--clr-accent);
+}
+
+.field-group input.wide {
+  min-width: 220px;
+}
+
+/* ── Section Titles ── */
+.section-title {
+  background: var(--clr-primary);
+  color: #ffffff;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title button {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 3px 12px;
+  border-radius: 4px;
+  font-family: var(--ff-body);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.section-title button:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ── Tables ── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.data-table thead th {
+  background: var(--clr-accent);
+  color: #ffffff;
+  padding: 8px 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--clr-border);
+  white-space: nowrap;
+}
+
+.data-table tbody td {
+  padding: 6px 8px;
+  border: 1px solid var(--clr-border);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background: var(--clr-table-alt);
+}
+
+.data-table tbody tr:hover {
+  background: #e8f4f8;
+}
+
+.data-table input,
+.data-table select {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-family: var(--ff-body);
+  font-size: 0.85rem;
+  padding: 2px;
+  outline: none;
+  color: var(--clr-text);
+}
+
+.data-table input:focus {
+  background: #e0f2fe;
+  border-radius: 3px;
+}
+
+.data-table input[type="date"] {
+  font-size: 0.78rem;
+}
+
+.data-table .total-row {
+  background: var(--clr-primary) !important;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.data-table .total-row td {
+  padding: 8px 10px;
+  border-color: var(--clr-primary);
+}
+
+.data-table .remove-row-btn {
+  background: none;
+  border: none;
+  color: var(--clr-danger);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0;
+  transition: var(--transition);
+  line-height: 1;
+}
+
+.data-table .remove-row-btn:hover {
+  transform: scale(1.3);
+}
+
+/* ── Tables Layout ── */
+.tables-section {
+  padding: 0 0;
+}
+
+.tables-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+/* ── Travel Details Section ── */
+.travel-details {
+  border-bottom: 2px solid var(--clr-border);
+}
+
+.travel-fields {
+  padding: 14px 30px 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 40px;
+  background: #fafbfc;
+}
+
+.travel-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.travel-field label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--clr-primary);
+  white-space: nowrap;
+  min-width: 140px;
+}
+
+.field-colon {
+  font-weight: 700;
+  color: var(--clr-primary);
+  font-size: 0.9rem;
+}
+
+.travel-field input {
+  flex: 1;
+  border: none;
+  border-bottom: 2px solid var(--clr-border);
+  background: transparent;
+  padding: 4px 6px;
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--clr-text);
+  outline: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+}
+
+.travel-field input:focus {
+  border-bottom-color: var(--clr-accent);
+}
+
+/* ── Charges Table Specific ── */
+.charges-description {
+  text-align: left !important;
+  font-weight: 500;
+}
+
+/* ── Billing Box ── */
+.billing-section {
+  padding: 0 30px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.billing-box {
+  width: 360px;
+  border: 2px solid var(--clr-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.billing-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--clr-border-light);
+  font-size: 0.9rem;
+}
+
+.billing-row:last-child {
+  border-bottom: none;
+}
+
+.billing-row label {
+  font-weight: 500;
+  color: var(--clr-text-muted);
+}
+
+.billing-row input,
+.billing-row select {
+  border: none;
+  border-bottom: 1px solid var(--clr-border-light);
+  background: transparent;
+  text-align: right;
+  font-family: var(--ff-body);
+  font-size: 0.9rem;
+  padding: 2px 4px;
+  width: 120px;
+  outline: none;
+  color: var(--clr-text);
+}
+
+.billing-row input:focus {
+  border-bottom-color: var(--clr-accent);
+}
+
+.billing-row .value {
+  font-weight: 600;
+  font-size: 0.95rem;
+  min-width: 100px;
+  text-align: right;
+}
+
+.billing-row.total-final {
+  background: var(--clr-primary);
+  color: #ffffff;
+  padding: 12px 16px;
+}
+
+.billing-row.total-final label {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.billing-row.total-final .value {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.billing-row.gst-row {
+  background: #f0fdf4;
+}
+
+.billing-row.gst-row select {
+  width: 70px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--clr-accent);
+  cursor: pointer;
+}
+
+/* ── Footer ── */
+.invoice-footer {
+  padding: 30px 30px 16px;
+  border-top: 2px solid var(--clr-border);
+}
+
+.signatures {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.sig-block {
+  text-align: center;
+  width: 200px;
+}
+
+.sig-line {
+  border-top: 2px solid var(--clr-border);
+  margin-bottom: 6px;
+  margin-top: 50px;
+}
+
+.sig-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  letter-spacing: 0.5px;
+}
+
+.sig-stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sig-stamp img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  opacity: 0.3;
+  margin-bottom: 4px;
+}
+
+.footer-tagline {
+  text-align: center;
+  background: var(--clr-accent);
+  color: #ffffff;
+  padding: 10px 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin: 0 -30px -16px;
+}
+
+/* ── Action Buttons Bar ── */
+.actions-bar {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--ff-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--clr-primary);
+  color: #ffffff;
+}
+
+.btn-accent {
+  background: var(--clr-accent);
+  color: #ffffff;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--clr-primary);
+  border: 2px solid var(--clr-primary);
+}
+
+.btn-outline:hover {
+  background: var(--clr-primary);
+  color: #ffffff;
+}
+
+.btn-danger {
+  background: var(--clr-danger);
+  color: #ffffff;
+}
+
+.btn-success {
+  background: var(--clr-success);
+  color: #ffffff;
+}
+
+/* ── Invoice History Panel ── */
+.history-panel {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  height: 100vh;
+  background: var(--clr-card);
+  box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+  z-index: 200;
+  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+}
+
+.history-panel.open {
+  right: 0;
+}
+
+.history-panel-header {
+  background: var(--clr-primary);
+  color: #ffffff;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.history-panel-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.history-close-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.history-list {
+  padding: 12px;
+}
+
+.history-item {
+  padding: 12px 16px;
+  border: 1px solid var(--clr-border-light);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-item:hover {
+  background: #f0f7ff;
+  border-color: var(--clr-accent);
+  transform: translateX(-3px);
+}
+
+.history-item-info h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--clr-primary);
+}
+
+.history-item-info p {
+  font-size: 0.72rem;
+  color: var(--clr-text-muted);
+  margin-top: 2px;
+}
+
+.history-item-amount {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--clr-accent);
+}
+
+.history-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--clr-text-muted);
+  font-size: 0.9rem;
+}
+
+.history-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 190;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.history-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Settings Page ── */
+.settings-container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.settings-card {
+  background: var(--clr-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+}
+
+.settings-card h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--clr-primary);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--clr-accent);
+}
+
+.settings-form .form-group {
+  margin-bottom: 16px;
+}
+
+.settings-form .form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--clr-text-muted);
+  margin-bottom: 6px;
+}
+
+.settings-form .form-group input,
+.settings-form .form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--clr-border-light);
+  border-radius: var(--radius);
+  font-family: var(--ff-body);
+  font-size: 0.9rem;
+  color: var(--clr-text);
+  outline: none;
+  transition: var(--transition);
+}
+
+.settings-form .form-group input:focus,
+.settings-form .form-group textarea:focus {
+  border-color: var(--clr-accent);
+  box-shadow: 0 0 0 3px rgba(26, 107, 107, 0.1);
+}
+
+.settings-form .form-group textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.logo-upload-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-preview {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--clr-accent);
+  object-fit: cover;
+  background: var(--clr-bg);
+}
+
+.settings-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  html { font-size: 13px; }
+
+  .invoice-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 18px 16px;
+  }
+
+  .header-contact {
+    text-align: center;
+  }
+
+  .agency-name {
+    font-size: 1.3rem;
+  }
+
+  .customer-bar {
+    grid-template-columns: 1fr 1fr;
+    padding: 14px 16px;
+  }
+
+  .travel-fields {
+    grid-template-columns: 1fr;
+    padding: 10px 16px 14px;
+    gap: 6px;
+  }
+
+  .travel-field label {
+    min-width: 110px;
+    font-size: 0.72rem;
+  }
+
+  .data-table {
+    font-size: 0.75rem;
+  }
+
+  .data-table thead th {
+    padding: 5px 4px;
+    font-size: 0.65rem;
+  }
+
+  .data-table tbody td {
+    padding: 4px 3px;
+  }
+
+  .billing-section {
+    padding: 0 16px 16px;
+  }
+
+  .billing-box {
+    width: 100%;
+  }
+
+  .signatures {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .invoice-footer {
+    padding: 20px 16px 16px;
+  }
+
+  .footer-tagline {
+    margin: 0 -16px -16px;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 12px;
+  }
+
+  .top-bar-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .actions-bar {
+    gap: 8px;
+  }
+
+  .btn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .customer-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .history-panel {
+    width: 100%;
+    right: -100%;
+  }
+}
+
+/* ── Utility ── */
+.text-right { text-align: right; }
+.text-left { text-align: left !important; }
+.text-center { text-align: center; }
+.font-bold { font-weight: 700; }
+.mt-1 { margin-top: 8px; }
+.mb-1 { margin-bottom: 8px; }

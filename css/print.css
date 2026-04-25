@@ -1,0 +1,278 @@
+/* ============================================
+   SARKAR TRAVEL AGENCY — Print Styles
+   Forces entire invoice onto a single A4 page
+   ============================================ */
+
+@media print {
+  /* Hide non-printable elements */
+  .top-bar,
+  .actions-bar,
+  .section-title button,
+  .remove-row-btn,
+  .history-panel,
+  .history-overlay,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset page for single page fit */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html {
+    font-size: 9px !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .app-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .invoice-card {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* ── Compact Header ── */
+  .invoice-header {
+    background: #1a2a4a !important;
+    padding: 10px 16px !important;
+    gap: 12px !important;
+  }
+
+  .header-logo {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .agency-name {
+    font-size: 1.5rem !important;
+  }
+
+  .agency-tagline {
+    font-size: 0.7rem !important;
+  }
+
+  .header-contact {
+    font-size: 0.65rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* ── Compact GST Label ── */
+  .gst-label-bar {
+    background: #1a6b6b !important;
+    padding: 3px 0 !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 2px !important;
+  }
+
+  /* ── Compact Customer Bar ── */
+  .customer-bar {
+    padding: 6px 16px !important;
+    gap: 10px !important;
+  }
+
+  .field-group label {
+    font-size: 0.55rem !important;
+  }
+
+  .field-group input {
+    font-size: 0.75rem !important;
+    padding: 2px 1px !important;
+    min-width: 70px !important;
+  }
+
+  .field-group input.wide {
+    min-width: 140px !important;
+  }
+
+  /* ── Compact Travel Details ── */
+  .travel-details {
+    border-bottom: 1px solid #222 !important;
+  }
+
+  .travel-fields {
+    padding: 4px 16px 6px !important;
+    gap: 2px 20px !important;
+  }
+
+  .travel-field label {
+    font-size: 0.6rem !important;
+    min-width: 90px !important;
+  }
+
+  .travel-field input {
+    font-size: 0.7rem !important;
+    padding: 1px 3px !important;
+    border-bottom-width: 1px !important;
+  }
+
+  .field-colon {
+    font-size: 0.7rem !important;
+  }
+
+  /* ── Compact Section Titles ── */
+  .section-title {
+    background: #1a2a4a !important;
+    padding: 3px 10px !important;
+    font-size: 0.65rem !important;
+  }
+
+  /* ── Compact Tables ── */
+  .data-table {
+    font-size: 0.65rem !important;
+  }
+
+  .data-table thead th {
+    background: #1a6b6b !important;
+    color: #ffffff !important;
+    padding: 2px 3px !important;
+    font-size: 0.55rem !important;
+  }
+
+  .data-table tbody td {
+    padding: 1px 3px !important;
+    border: 1px solid #333 !important;
+  }
+
+  .data-table input,
+  .data-table select {
+    font-size: 0.62rem !important;
+    padding: 0 !important;
+  }
+
+  .data-table input[type="date"] {
+    font-size: 0.55rem !important;
+  }
+
+  .data-table .total-row {
+    background: #1a2a4a !important;
+    color: #ffffff !important;
+  }
+
+  .data-table .total-row td {
+    padding: 2px 6px !important;
+    border-color: #1a2a4a !important;
+  }
+
+  .data-table tbody tr:nth-child(even) {
+    background: #f0f2f5 !important;
+  }
+
+  /* ── Compact Billing ── */
+  .billing-section {
+    padding: 0 16px 8px !important;
+  }
+
+  .billing-box {
+    width: 280px !important;
+    border-width: 1px !important;
+  }
+
+  .billing-row {
+    padding: 2px 10px !important;
+    font-size: 0.7rem !important;
+  }
+
+  .billing-row label {
+    font-size: 0.7rem !important;
+  }
+
+  .billing-row .value {
+    font-size: 0.72rem !important;
+    min-width: 70px !important;
+  }
+
+  .billing-row input {
+    font-size: 0.7rem !important;
+    width: 80px !important;
+    padding: 1px 2px !important;
+  }
+
+  .billing-row.total-final {
+    background: #1a2a4a !important;
+    color: #ffffff !important;
+    padding: 4px 10px !important;
+  }
+
+  .billing-row.total-final label {
+    font-size: 0.75rem !important;
+    color: #ffffff !important;
+  }
+
+  .billing-row.total-final .value {
+    font-size: 0.85rem !important;
+    color: #ffffff !important;
+  }
+
+  .billing-row.gst-row {
+    background: #f0fdf4 !important;
+  }
+
+  /* ── Compact Footer ── */
+  .invoice-footer {
+    padding: 8px 16px 0 !important;
+    border-top: 1px solid #222 !important;
+  }
+
+  .signatures {
+    margin-bottom: 8px !important;
+  }
+
+  .sig-block {
+    width: 140px !important;
+  }
+
+  .sig-line {
+    margin-top: 25px !important;
+    border-top: 1px solid #222 !important;
+    margin-bottom: 3px !important;
+  }
+
+  .sig-label {
+    font-size: 0.55rem !important;
+  }
+
+  .sig-stamp img {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .footer-tagline {
+    background: #1a6b6b !important;
+    color: #ffffff !important;
+    padding: 4px 0 !important;
+    font-size: 0.6rem !important;
+    letter-spacing: 2px !important;
+    margin: 0 -16px 0 !important;
+  }
+
+  /* ── Make inputs look like plain text ── */
+  input, select {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+  }
+
+  .customer-bar input,
+  .travel-field input {
+    border-bottom: 1px solid #555 !important;
+  }
+
+  /* ── Force single page ── */
+  @page {
+    margin: 4mm;
+    size: A4 portrait;
+  }
+}

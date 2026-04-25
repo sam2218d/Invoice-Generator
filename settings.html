@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SARKAR TRAVEL AGENCY — Company Profile Settings">
+  <title>Settings — SARKAR TRAVEL AGENCY</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+</head>
+<body>
+
+  <!-- ════════ TOP NAV BAR ════════ -->
+  <nav class="top-bar">
+    <div class="top-bar-left">
+      <img src="assets/logo.png" alt="STA Logo" class="top-bar-logo">
+      <span class="top-bar-title">COMPANY SETTINGS</span>
+    </div>
+    <div class="top-bar-actions">
+      <a href="index.html" title="Back to Invoice">← Back to Invoice</a>
+    </div>
+  </nav>
+
+  <!-- ════════ SETTINGS FORM ════════ -->
+  <div class="settings-container">
+    <div class="settings-card">
+      <h2>🏢 Company Profile</h2>
+
+      <form class="settings-form" onsubmit="event.preventDefault();">
+        <div class="form-group">
+          <label for="set-company-name">Company Name</label>
+          <input type="text" id="set-company-name" placeholder="e.g. SARKAR TRAVEL AGENCY">
+        </div>
+
+        <div class="form-group">
+          <label for="set-tagline">Tagline</label>
+          <input type="text" id="set-tagline" placeholder="e.g. Authorized Travel Agents & Tour Operators">
+        </div>
+
+        <div class="form-group">
+          <label for="set-tagline2">Footer Tagline</label>
+          <input type="text" id="set-tagline2" placeholder="e.g. EXPLORE. DRIVE. DISCOVER.">
+        </div>
+
+        <div class="form-group">
+          <label for="set-address">Address</label>
+          <textarea id="set-address" placeholder="e.g. 45, Main Road, City, State, Zip"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="set-phone">Phone Number</label>
+          <input type="text" id="set-phone" placeholder="e.g. +91 98765 43210">
+        </div>
+
+        <div class="form-group">
+          <label for="set-email">Email</label>
+          <input type="email" id="set-email" placeholder="e.g. email@agency.com">
+        </div>
+
+        <div class="form-group">
+          <label for="set-gstin">GSTIN</label>
+          <input type="text" id="set-gstin" placeholder="e.g. 27AABCU9603R1ZM">
+        </div>
+
+        <div class="form-group">
+          <label>Company Logo</label>
+          <div class="logo-upload-area">
+            <img id="logo-preview" src="assets/logo.png" alt="Logo Preview" class="logo-preview">
+            <div>
+              <input type="file" id="set-logo" accept="image/*">
+              <p style="font-size:0.72rem; color:#64748b; margin-top:4px;">Max 2MB. PNG or JPG recommended.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-actions">
+          <button type="button" class="btn btn-accent" id="btn-save-settings">💾 Save Settings</button>
+          <button type="button" class="btn btn-outline" id="btn-reset-settings">🔄 Reset to Defaults</button>
+          <a href="index.html" class="btn btn-primary">← Back to Invoice</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ════════ SCRIPTS ════════ -->
+  <script src="js/storage.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

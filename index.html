@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SARKAR TRAVEL AGENCY — Professional Cab Invoice Generator. Create, print, and download GST invoices.">
+  <title>SARKAR TRAVEL AGENCY — Invoice Generator</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/print.css">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+</head>
+<body>
+
+  <!-- ════════ TOP NAV BAR ════════ -->
+  <nav class="top-bar no-print">
+    <div class="top-bar-left">
+      <img src="assets/logo.png" alt="STA Logo" class="top-bar-logo dynamic-logo">
+      <span class="top-bar-title">SARKAR TRAVEL AGENCY</span>
+    </div>
+    <div class="top-bar-actions">
+      <button id="btn-save" title="Save Invoice">💾 Save</button>
+      <button id="btn-reset" title="New Invoice">🔄 New</button>
+      <button id="btn-duplicate" title="Duplicate Last">📋 Duplicate</button>
+      <button id="btn-history" title="Invoice History">📜 History</button>
+      <a href="settings.html" title="Settings">⚙️ Settings</a>
+    </div>
+  </nav>
+
+  <!-- ════════ MAIN CONTAINER ════════ -->
+  <div class="app-container">
+
+    <!-- ════════ INVOICE CARD ════════ -->
+    <div class="invoice-card" id="invoice-card">
+
+      <!-- ── Header ── -->
+      <header class="invoice-header">
+        <img src="assets/logo.png" alt="Agency Logo" class="header-logo dynamic-logo">
+        <div class="header-info">
+          <h1 class="agency-name" id="agency-name">SARKAR TRAVEL AGENCY</h1>
+          <p class="agency-tagline" id="agency-tagline">Authorized Travel Agents &amp; Tour Operators</p>
+        </div>
+        <div class="header-contact">
+          <span>📍 <span id="header-address">45, Main Road, City, State, Zip</span></span>
+          <span>📞 <span id="header-phone">+91 98765 43210</span></span>
+          <span>✉️ <span id="header-email">email@agency.com</span></span>
+        </div>
+      </header>
+
+      <!-- ── GST Label ── -->
+      <div class="gst-label-bar">GST Invoice</div>
+
+      <!-- ── Customer Info Bar ── -->
+      <div class="customer-bar">
+        <div class="field-group">
+          <label for="customer-name">Customer Name</label>
+          <input type="text" id="customer-name" class="wide" placeholder="Enter customer name">
+        </div>
+        <div class="field-group">
+          <label for="customer-gstin">GSTIN</label>
+          <input type="text" id="customer-gstin" placeholder="GSTIN (if any)">
+        </div>
+        <div class="field-group">
+          <label for="invoice-date">Date</label>
+          <input type="date" id="invoice-date">
+        </div>
+        <div class="field-group">
+          <label for="invoice-number">Invoice No.</label>
+          <input type="text" id="invoice-number" readonly>
+        </div>
+      </div>
+
+      <!-- ════════ TRAVEL DETAILS ════════ -->
+      <div class="travel-details">
+        <div class="section-title">
+          <span>🗺️ Travel Details</span>
+        </div>
+        <div class="travel-fields">
+          <div class="travel-field">
+            <label for="starting-place">Starting Place</label>
+            <span class="field-colon">:</span>
+            <input type="text" id="starting-place" placeholder="e.g. Battala">
+          </div>
+          <div class="travel-field">
+            <label for="visiting-place">Visiting Place</label>
+            <span class="field-colon">:</span>
+            <input type="text" id="visiting-place" placeholder="e.g. Udaipur">
+          </div>
+          <div class="travel-field">
+            <label for="dropping-place">Dropping Place</label>
+            <span class="field-colon">:</span>
+            <input type="text" id="dropping-place" placeholder="e.g. Airport">
+          </div>
+          <div class="travel-field">
+            <label for="num-passengers">No. of Passengers</label>
+            <span class="field-colon">:</span>
+            <input type="number" id="num-passengers" placeholder="0" min="0">
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════ TABLES SECTION ════════ -->
+      <div class="tables-section">
+
+        <!-- ── Vehicle Detail Table ── -->
+        <div class="section-title">
+          <span>🚗 Vehicle Details</span>
+          <button id="btn-add-vehicle" type="button">+ Add Vehicle</button>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="data-table" id="vehicle-table">
+            <thead>
+              <tr>
+                <th style="width:40px;">S.No</th>
+                <th>Vehicle No.</th>
+                <th>Type</th>
+                <th>Driver</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Start KM</th>
+                <th>End KM</th>
+                <th>Total KM</th>
+                <th style="width:36px;" class="no-print"></th>
+              </tr>
+            </thead>
+            <tbody id="vehicle-tbody">
+              <!-- Dynamic rows inserted by JS -->
+            </tbody>
+            <tfoot>
+              <tr class="total-row">
+                <td colspan="8" style="text-align:right; padding-right:16px;">TOTAL KM</td>
+                <td id="vehicle-total-km" class="font-bold">0</td>
+                <td class="no-print"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- ── Charges Detail Table ── -->
+        <div class="section-title">
+          <span>💰 Charges Detail</span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="data-table" id="charges-table">
+            <thead>
+              <tr>
+                <th style="width:40px;">S.No</th>
+                <th>Description</th>
+                <th style="width:100px;">Qty / Days / KM</th>
+                <th style="width:100px;">Rate (₹)</th>
+                <th style="width:140px;">Amount (₹)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="charge-row" data-charge-id="perday">
+                <td>1</td>
+                <td class="charges-description text-left">Per Day Price</td>
+                <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
+                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+              </tr>
+              <tr class="charge-row" data-charge-id="perkm">
+                <td>2</td>
+                <td class="charges-description text-left">Per Kilometre Price</td>
+                <td><input type="number" class="charge-qty" id="charge-perkm-qty" placeholder="0" min="0"></td>
+                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+              </tr>
+              <tr class="charge-row" data-charge-id="parking">
+                <td>3</td>
+                <td class="charges-description text-left">Parking</td>
+                <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
+                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+              </tr>
+              <tr class="charge-row" data-charge-id="night">
+                <td>4</td>
+                <td class="charges-description text-left">Night Charge</td>
+                <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
+                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+              </tr>
+              <tr class="charge-row" data-charge-id="toll">
+                <td>5</td>
+                <td class="charges-description text-left">Toll Charges</td>
+                <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
+                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+              </tr>
+              <tr class="charge-row" data-charge-id="overtime">
+                <td>6</td>
+                <td class="charges-description text-left">Overtime Charges</td>
+                <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
+                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+              </tr>
+              <tr class="charge-row" data-charge-id="other">
+                <td>7</td>
+                <td class="charges-description text-left">Other Charges</td>
+                <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
+                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr class="total-row">
+                <td colspan="4" style="text-align:right; padding-right:16px;">TOTAL</td>
+                <td id="charges-total" class="font-bold">₹ 0.00</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <!-- ════════ BILLING BOX ════════ -->
+      <div class="billing-section">
+        <div class="billing-box">
+          <div class="billing-row">
+            <label>Subtotal</label>
+            <span class="value" id="billing-subtotal">₹ 0.00</span>
+          </div>
+          <div class="billing-row gst-row">
+            <label>GST
+              <select id="gst-percent">
+                <option value="0">0%</option>
+                <option value="5">5%</option>
+                <option value="12">12%</option>
+                <option value="18">18%</option>
+              </select>
+            </label>
+            <span class="value" id="billing-gst-amount">₹ 0.00</span>
+          </div>
+          <div class="billing-row">
+            <label>Total Price</label>
+            <span class="value" id="billing-total">₹ 0.00</span>
+          </div>
+          <div class="billing-row">
+            <label>Discount</label>
+            <input type="number" id="discount-input" placeholder="0" min="0">
+          </div>
+          <div class="billing-row">
+            <label>Advance Paid</label>
+            <input type="number" id="advance-input" placeholder="0" min="0">
+          </div>
+          <div class="billing-row total-final">
+            <label>FINAL TOTAL</label>
+            <span class="value" id="billing-final">₹ 0.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════ FOOTER ════════ -->
+      <footer class="invoice-footer">
+        <div class="signatures">
+          <div class="sig-block">
+            <div class="sig-line"></div>
+            <span class="sig-label">Customer Signature</span>
+          </div>
+          <div class="sig-block sig-stamp">
+            <img src="assets/logo.png" alt="Stamp" class="dynamic-logo">
+            <div class="sig-line" style="margin-top:10px;"></div>
+            <span class="sig-label">Authorized Signatory</span>
+          </div>
+        </div>
+        <div class="footer-tagline" id="footer-tagline">EXPLORE. DRIVE. DISCOVER.</div>
+      </footer>
+    </div>
+
+    <!-- ════════ ACTION BUTTONS ════════ -->
+    <div class="actions-bar no-print">
+      <button class="btn btn-primary" id="btn-print">🖨️ Print Invoice</button>
+      <button class="btn btn-accent" id="btn-pdf">📥 Download PDF</button>
+    </div>
+  </div>
+
+  <!-- ════════ HISTORY PANEL ════════ -->
+  <div class="history-overlay" id="history-overlay"></div>
+  <aside class="history-panel" id="history-panel">
+    <div class="history-panel-header">
+      <h3>📜 Invoice History</h3>
+      <button class="history-close-btn" id="history-close">✕</button>
+    </div>
+    <div class="history-list" id="history-list">
+      <div class="history-empty">📋 No saved invoices yet.</div>
+    </div>
+  </aside>
+
+  <!-- ════════ SCRIPTS ════════ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/pdf.js"></script>
+</body>
+</html>
