@@ -1,6 +1,6 @@
 /* ============================================
    SARKAR TRAVEL AGENCY — PDF Generation
-   Landscape A4 output with optimized spacing
+   Landscape A4 — single page output
    ============================================ */
 
 function generatePDF() {
@@ -24,24 +24,26 @@ function generatePDF() {
   const noPrintEls = document.querySelectorAll('.remove-row-btn, .section-title button, .no-print');
   noPrintEls.forEach(el => el.style.display = 'none');
 
-  // Temporarily apply compact styles for PDF capture
+  // Temporarily apply compact styles for single-page PDF capture
   invoice.style.fontSize = '8px';
-  document.querySelectorAll('.invoice-header').forEach(el => el.style.padding = '6px 16px');
-  document.querySelectorAll('.header-logo').forEach(el => { el.style.width = '40px'; el.style.height = '40px'; });
+  invoice.style.border = '1px solid #cbd5e1';
+  document.querySelectorAll('.invoice-header').forEach(el => { el.style.padding = '8px 16px'; el.style.borderBottom = '2px solid #0ea5e9'; });
+  document.querySelectorAll('.header-logo').forEach(el => { el.style.width = '38px'; el.style.height = '38px'; });
+  document.querySelectorAll('.gst-label-bar').forEach(el => el.style.padding = '2px 0');
   document.querySelectorAll('.customer-bar').forEach(el => el.style.padding = '4px 16px');
   document.querySelectorAll('.section-title').forEach(el => el.style.padding = '2px 10px');
   document.querySelectorAll('.data-table thead th').forEach(el => el.style.padding = '2px 3px');
   document.querySelectorAll('.data-table tbody td').forEach(el => el.style.padding = '1px 3px');
-  document.querySelectorAll('.billing-row').forEach(el => el.style.padding = '1px 8px');
-  document.querySelectorAll('.billing-section').forEach(el => el.style.padding = '0 16px 4px');
+  document.querySelectorAll('.billing-row').forEach(el => el.style.padding = '2px 8px');
+  document.querySelectorAll('.billing-section, .billing-col').forEach(el => el.style.padding = '0');
   document.querySelectorAll('.invoice-footer').forEach(el => el.style.padding = '4px 16px 0');
-  document.querySelectorAll('.sig-line').forEach(el => el.style.marginTop = '18px');
-  document.querySelectorAll('.signatures').forEach(el => { el.style.marginBottom = '4px'; el.style.padding = '0 20px'; });
-  document.querySelectorAll('.travel-fields').forEach(el => el.style.padding = '2px 16px 4px');
+  document.querySelectorAll('.sig-line').forEach(el => el.style.marginTop = '16px');
+  document.querySelectorAll('.signatures').forEach(el => { el.style.marginBottom = '4px'; el.style.padding = '0 30px'; });
+  document.querySelectorAll('.travel-fields').forEach(el => el.style.padding = '3px 16px 4px');
   document.querySelectorAll('.footer-tagline').forEach(el => { el.style.padding = '3px 0'; el.style.margin = '0 -16px 0'; });
 
   const options = {
-    margin: [4, 4, 4, 4],
+    margin: [3, 3, 3, 3],
     filename: filename,
     image: { type: 'jpeg', quality: 0.95 },
     html2canvas: {
@@ -53,12 +55,10 @@ function generatePDF() {
     jsPDF: {
       unit: 'mm',
       format: 'a4',
-      orientation: 'landscape',
+      orientation: 'portrait',
     },
     pagebreak: { mode: ['avoid-all'] },
   };
-
-  // Note: PDF uses landscape orientation directly (no CSS rotation needed)
 
   html2pdf()
     .set(options)
@@ -80,17 +80,19 @@ function restoreStyles(invoice, noPrintEls) {
 
   // Remove inline compact styles
   invoice.style.fontSize = '';
-  document.querySelectorAll('.invoice-header').forEach(el => el.style.padding = '');
+  invoice.style.border = '';
+  document.querySelectorAll('.invoice-header').forEach(el => { el.style.padding = ''; el.style.borderBottom = ''; });
   document.querySelectorAll('.header-logo').forEach(el => { el.style.width = ''; el.style.height = ''; });
+  document.querySelectorAll('.gst-label-bar').forEach(el => el.style.padding = '');
   document.querySelectorAll('.customer-bar').forEach(el => el.style.padding = '');
   document.querySelectorAll('.section-title').forEach(el => el.style.padding = '');
   document.querySelectorAll('.data-table thead th').forEach(el => el.style.padding = '');
   document.querySelectorAll('.data-table tbody td').forEach(el => el.style.padding = '');
   document.querySelectorAll('.billing-row').forEach(el => el.style.padding = '');
-  document.querySelectorAll('.billing-section').forEach(el => el.style.padding = '');
+  document.querySelectorAll('.billing-section, .billing-col').forEach(el => el.style.padding = '');
   document.querySelectorAll('.invoice-footer').forEach(el => el.style.padding = '');
   document.querySelectorAll('.sig-line').forEach(el => el.style.marginTop = '');
-  document.querySelectorAll('.signatures').forEach(el => el.style.marginBottom = '');
+  document.querySelectorAll('.signatures').forEach(el => { el.style.marginBottom = ''; el.style.padding = ''; });
   document.querySelectorAll('.travel-fields').forEach(el => el.style.padding = '');
   document.querySelectorAll('.footer-tagline').forEach(el => { el.style.padding = ''; el.style.margin = ''; });
 }

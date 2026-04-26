@@ -135,120 +135,129 @@
           </table>
       </div>
 
-        <!-- ── Charges Detail Table ── -->
-        <div class="section-title">
-          <span>💰 Charges Detail</span>
-        </div>
-        <div style="overflow-x:auto;">
-          <table class="data-table" id="charges-table">
-            <thead>
-              <tr>
-                <th style="width:40px;">S.No</th>
-                <th>Description</th>
-                <th style="width:100px;">Qty / Days / KM</th>
-                <th style="width:100px;">Rate (₹)</th>
-                <th style="width:140px;">Amount (₹)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="charge-row" data-charge-id="perday">
-                <td>1</td>
-                <td class="charges-description text-left">Per Day Price</td>
-                <td><input type="number" class="charge-qty" id="charge-perday-qty" placeholder="0" min="0"></td>
-                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
-                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
-              </tr>
-              <tr class="charge-row" data-charge-id="perkm">
-                <td>2</td>
-                <td class="charges-description text-left">Per Kilometre Price</td>
-                <td><input type="number" class="charge-qty" id="charge-perkm-qty" placeholder="0" min="0"></td>
-                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
-                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
-              </tr>
-              <tr class="charge-row" data-charge-id="parking">
-                <td>3</td>
-                <td class="charges-description text-left">Parking</td>
-                <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
-                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
-                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
-              </tr>
-              <tr class="charge-row" data-charge-id="night">
-                <td>4</td>
-                <td class="charges-description text-left">Night Charge</td>
-                <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
-                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
-                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
-              </tr>
-              <tr class="charge-row" data-charge-id="toll">
-                <td>5</td>
-                <td class="charges-description text-left">Toll Charges</td>
-                <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
-                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
-                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
-              </tr>
-              <tr class="charge-row" data-charge-id="overtime">
-                <td>6</td>
-                <td class="charges-description text-left">Overtime Charges</td>
-                <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
-                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
-                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
-              </tr>
-              <tr class="charge-row" data-charge-id="other">
-                <td>7</td>
-                <td class="charges-description text-left">Other Charges</td>
-                <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
-                <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
-                <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr class="total-row">
-                <td colspan="4" style="text-align:right; padding-right:16px;">TOTAL</td>
-                <td id="charges-total" class="font-bold">₹ 0.00</td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-      </div>
+      <!-- ════════ CHARGES + BILLING SIDE BY SIDE ════════ -->
+      <div class="charges-billing-row">
 
-      <!-- ════════ BILLING BOX ════════ -->
-      <div class="billing-section">
-        <div class="billing-box">
-          <div class="billing-row">
-            <label>Subtotal</label>
-            <span class="value" id="billing-subtotal">₹ 0.00</span>
+        <!-- ── Charges Detail Table ── -->
+        <div class="charges-col">
+          <div class="section-title">
+            <span>💰 Charges Detail</span>
           </div>
-          <div class="billing-row gst-row">
-            <label>GST
-              <select id="gst-percent">
-                <option value="0">0%</option>
-                <option value="5">5%</option>
-                <option value="12">12%</option>
-                <option value="18">18%</option>
-              </select>
-            </label>
-            <span class="value" id="billing-gst-amount">₹ 0.00</span>
-          </div>
-          <div class="billing-row">
-            <label>Total Price</label>
-            <span class="value" id="billing-total">₹ 0.00</span>
-          </div>
-          <div class="billing-row discount-row">
-            <label>Discount
-              <input type="number" id="discount-input" placeholder="0" min="0" max="100"
-                style="width:60px; text-align:center; font-weight:600; color:var(--clr-danger);"> %
-            </label>
-            <span class="value" id="billing-discount-amount">₹ 0.00</span>
-          </div>
-          <div class="billing-row">
-            <label>Advance Paid</label>
-            <input type="number" id="advance-input" placeholder="0" min="0">
-          </div>
-          <div class="billing-row total-final">
-            <label>FINAL TOTAL</label>
-            <span class="value" id="billing-final">₹ 0.00</span>
+          <div style="overflow-x:auto;">
+            <table class="data-table" id="charges-table">
+              <thead>
+                <tr>
+                  <th style="width:40px;">S.No</th>
+                  <th>Description</th>
+                  <th style="width:100px;">Qty / Days / KM</th>
+                  <th style="width:100px;">Rate (₹)</th>
+                  <th style="width:120px;">Amount (₹)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="charge-row" data-charge-id="perday">
+                  <td>1</td>
+                  <td class="charges-description text-left">Per Day Price</td>
+                  <td><input type="number" class="charge-qty" id="charge-perday-qty" placeholder="0" min="0"></td>
+                  <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                  <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+                </tr>
+                <tr class="charge-row" data-charge-id="perkm">
+                  <td>2</td>
+                  <td class="charges-description text-left">Per Kilometre Price</td>
+                  <td><input type="number" class="charge-qty" id="charge-perkm-qty" placeholder="0" min="0"></td>
+                  <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                  <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+                </tr>
+                <tr class="charge-row" data-charge-id="parking">
+                  <td>3</td>
+                  <td class="charges-description text-left">Parking</td>
+                  <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
+                  <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                  <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+                </tr>
+                <tr class="charge-row" data-charge-id="night">
+                  <td>4</td>
+                  <td class="charges-description text-left">Night Charge</td>
+                  <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
+                  <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                  <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+                </tr>
+                <tr class="charge-row" data-charge-id="toll">
+                  <td>5</td>
+                  <td class="charges-description text-left">Toll Charges</td>
+                  <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
+                  <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                  <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+                </tr>
+                <tr class="charge-row" data-charge-id="overtime">
+                  <td>6</td>
+                  <td class="charges-description text-left">Overtime Charges</td>
+                  <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
+                  <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                  <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+                </tr>
+                <tr class="charge-row" data-charge-id="other">
+                  <td>7</td>
+                  <td class="charges-description text-left">Other Charges</td>
+                  <td><input type="number" class="charge-qty" placeholder="0" min="0"></td>
+                  <td><input type="number" class="charge-rate" placeholder="0" min="0"></td>
+                  <td class="charge-amount font-bold" data-value="0">₹ 0.00</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr class="total-row">
+                  <td colspan="4" style="text-align:right; padding-right:16px;">TOTAL</td>
+                  <td id="charges-total" class="font-bold">₹ 0.00</td>
+                </tr>
+              </tfoot>
+            </table>
           </div>
         </div>
+
+        <!-- ════════ BILLING BOX ════════ -->
+        <div class="billing-col">
+          <div class="section-title billing-title">
+            <span>💲 Billing Summary</span>
+          </div>
+          <div class="billing-box">
+            <div class="billing-row">
+              <label>Subtotal</label>
+              <span class="value" id="billing-subtotal">₹ 0.00</span>
+            </div>
+            <div class="billing-row gst-row">
+              <label>GST
+                <select id="gst-percent">
+                  <option value="0">0%</option>
+                  <option value="5">5%</option>
+                  <option value="12">12%</option>
+                  <option value="18">18%</option>
+                </select>
+              </label>
+              <span class="value" id="billing-gst-amount">₹ 0.00</span>
+            </div>
+            <div class="billing-row">
+              <label>Total Price</label>
+              <span class="value" id="billing-total">₹ 0.00</span>
+            </div>
+            <div class="billing-row discount-row">
+              <label>Discount
+                <input type="number" id="discount-input" placeholder="0" min="0" max="100"
+                  style="width:50px; text-align:center; font-weight:600; color:var(--clr-danger);"> %
+              </label>
+              <span class="value" id="billing-discount-amount">₹ 0.00</span>
+            </div>
+            <div class="billing-row">
+              <label>Advance Paid</label>
+              <input type="number" id="advance-input" placeholder="0" min="0">
+            </div>
+            <div class="billing-row total-final">
+              <label>FINAL TOTAL</label>
+              <span class="value" id="billing-final">₹ 0.00</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- ════════ FOOTER ════════ -->
