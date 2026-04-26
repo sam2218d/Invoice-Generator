@@ -23,7 +23,7 @@
   }
 
   html {
-    font-size: 9px !important;
+    font-size: 8px !important;
   }
 
   body {
@@ -50,55 +50,55 @@
   .invoice-header {
     background: #fdfdfd !important;
     color: #1e3a8a !important;
-    padding: 10px 20px !important;
-    gap: 14px !important;
+    padding: 6px 16px !important;
+    gap: 10px !important;
     border-bottom: 2px solid #cbd5e1 !important;
   }
 
   .header-logo {
-    width: 50px !important;
-    height: 50px !important;
+    width: 40px !important;
+    height: 40px !important;
   }
 
   .agency-name {
-    font-size: 1.5rem !important;
+    font-size: 1.3rem !important;
   }
 
   .agency-tagline {
-    font-size: 0.7rem !important;
+    font-size: 0.6rem !important;
   }
 
   .header-contact {
-    font-size: 0.65rem !important;
-    line-height: 1.5 !important;
+    font-size: 0.58rem !important;
+    line-height: 1.4 !important;
   }
 
   /* ── GST Label ── */
   .gst-label-bar {
     background: #0ea5e9 !important;
-    padding: 3px 0 !important;
-    font-size: 0.8rem !important;
+    padding: 2px 0 !important;
+    font-size: 0.7rem !important;
     letter-spacing: 2px !important;
   }
 
   /* ── Customer Bar ── */
   .customer-bar {
-    padding: 6px 20px !important;
-    gap: 10px !important;
+    padding: 4px 16px !important;
+    gap: 8px !important;
   }
 
   .field-group label {
-    font-size: 0.55rem !important;
+    font-size: 0.5rem !important;
   }
 
   .field-group input {
-    font-size: 0.75rem !important;
-    padding: 2px 1px !important;
-    min-width: 80px !important;
+    font-size: 0.68rem !important;
+    padding: 1px 1px !important;
+    min-width: 70px !important;
   }
 
   .field-group input.wide {
-    min-width: 160px !important;
+    min-width: 140px !important;
   }
 
   /* ── Travel Details ── */
@@ -107,63 +107,63 @@
   }
 
   .travel-fields {
-    padding: 4px 20px 6px !important;
-    gap: 2px 30px !important;
+    padding: 2px 16px 4px !important;
+    gap: 1px 20px !important;
   }
 
   .travel-field label {
-    font-size: 0.6rem !important;
-    min-width: 95px !important;
+    font-size: 0.55rem !important;
+    min-width: 85px !important;
   }
 
   .travel-field input {
-    font-size: 0.7rem !important;
-    padding: 1px 3px !important;
+    font-size: 0.62rem !important;
+    padding: 1px 2px !important;
     border-bottom-width: 1px !important;
   }
 
   .field-colon {
-    font-size: 0.7rem !important;
+    font-size: 0.62rem !important;
   }
 
   /* ── Section Titles ── */
   .section-title {
     background: #1e3a8a !important;
-    padding: 3px 12px !important;
-    font-size: 0.65rem !important;
+    padding: 2px 10px !important;
+    font-size: 0.58rem !important;
   }
 
-  /* ── Tables — use full landscape width ── */
+  /* ── Tables ── */
   .data-table {
-    font-size: 0.7rem !important;
+    font-size: 0.6rem !important;
     width: 100% !important;
   }
 
   .data-table thead th {
     background: #0ea5e9 !important;
     color: #ffffff !important;
-    padding: 3px 4px !important;
-    font-size: 0.58rem !important;
+    padding: 2px 3px !important;
+    font-size: 0.5rem !important;
   }
 
   .data-table tbody td {
-    padding: 2px 4px !important;
+    padding: 1px 3px !important;
     border: 1px solid #cbd5e1 !important;
   }
 
   .data-table input,
   .data-table select {
-    font-size: 0.65rem !important;
+    font-size: 0.55rem !important;
     padding: 0 !important;
   }
 
   .data-table input[type="date"],
   .data-table input[type="time"] {
-    font-size: 0.58rem !important;
+    font-size: 0.5rem !important;
   }
 
   .datetime-cell {
-    gap: 1px !important;
+    gap: 0 !important;
   }
 
   .datetime-cell input[type="time"] {
@@ -176,7 +176,7 @@
   }
 
   .data-table .total-row td {
-    padding: 3px 6px !important;
+    padding: 2px 4px !important;
     border-color: #1e3a8a !important;
   }
 
@@ -186,47 +186,47 @@
 
   /* ── Billing ── */
   .billing-section {
-    padding: 0 20px 6px !important;
+    padding: 0 16px 4px !important;
   }
 
   .billing-box {
-    width: 280px !important;
+    width: 240px !important;
     border-width: 1px !important;
   }
 
   .billing-row {
-    padding: 2px 10px !important;
-    font-size: 0.7rem !important;
+    padding: 1px 8px !important;
+    font-size: 0.62rem !important;
   }
 
   .billing-row label {
-    font-size: 0.7rem !important;
+    font-size: 0.62rem !important;
   }
 
   .billing-row .value {
-    font-size: 0.72rem !important;
-    min-width: 70px !important;
+    font-size: 0.65rem !important;
+    min-width: 60px !important;
   }
 
   .billing-row input {
-    font-size: 0.7rem !important;
-    width: 80px !important;
-    padding: 1px 2px !important;
+    font-size: 0.62rem !important;
+    width: 70px !important;
+    padding: 0 2px !important;
   }
 
   .billing-row.total-final {
     background: #1e3a8a !important;
     color: #ffffff !important;
-    padding: 4px 10px !important;
+    padding: 3px 8px !important;
   }
 
   .billing-row.total-final label {
-    font-size: 0.75rem !important;
+    font-size: 0.68rem !important;
     color: #ffffff !important;
   }
 
   .billing-row.total-final .value {
-    font-size: 0.85rem !important;
+    font-size: 0.75rem !important;
     color: #ffffff !important;
   }
 
@@ -234,42 +234,46 @@
     background: #f1f5f9 !important;
   }
 
-  /* ── Footer ── */
+  /* ── Footer — Signatures with wide gap ── */
   .invoice-footer {
-    padding: 6px 20px 0 !important;
+    padding: 4px 16px 0 !important;
     border-top: 1px solid #cbd5e1 !important;
   }
 
   .signatures {
-    margin-bottom: 6px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    margin-bottom: 4px !important;
+    padding: 0 20px !important;
   }
 
   .sig-block {
-    width: 150px !important;
+    width: 160px !important;
   }
 
   .sig-line {
-    margin-top: 20px !important;
+    margin-top: 18px !important;
     border-top: 1px solid #1e3a8a !important;
-    margin-bottom: 3px !important;
+    margin-bottom: 2px !important;
   }
 
   .sig-label {
-    font-size: 0.55rem !important;
+    font-size: 0.5rem !important;
   }
 
   .sig-stamp img {
-    width: 30px !important;
-    height: 30px !important;
+    width: 28px !important;
+    height: 28px !important;
   }
 
   .footer-tagline {
     background: #0ea5e9 !important;
     color: #ffffff !important;
-    padding: 4px 0 !important;
-    font-size: 0.6rem !important;
+    padding: 3px 0 !important;
+    font-size: 0.55rem !important;
     letter-spacing: 2px !important;
-    margin: 0 -20px 0 !important;
+    margin: 0 -16px 0 !important;
   }
 
   /* ── Make inputs look like plain text ── */
@@ -289,7 +293,7 @@
 
   /* ── Landscape A4 single page ── */
   @page {
-    margin: 5mm;
+    margin: 4mm;
     size: A4 landscape;
   }
 }
