@@ -6,25 +6,25 @@
 
 /* ── Design Tokens ── */
 :root {
-  --clr-primary: #1a2a4a;
-  --clr-primary-light: #243b6a;
-  --clr-accent: #1a6b6b;
-  --clr-accent-light: #238f8f;
-  --clr-bg: #f5f7fa;
+  --clr-primary: #1e3a8a;
+  --clr-primary-light: #3b82f6;
+  --clr-accent: #0ea5e9;
+  --clr-accent-light: #38bdf8;
+  --clr-bg: #f8fafc;
   --clr-card: #ffffff;
-  --clr-table-alt: #f0f2f5;
-  --clr-border: #222222;
-  --clr-border-light: #d0d5dd;
-  --clr-text: #1a1a2e;
-  --clr-text-muted: #64748b;
-  --clr-danger: #dc3545;
+  --clr-table-alt: #f1f5f9;
+  --clr-border: #cbd5e1;
+  --clr-border-light: #e2e8f0;
+  --clr-text: #0f172a;
+  --clr-text-muted: #475569;
+  --clr-danger: #ef4444;
   --clr-success: #10b981;
   --clr-gold: #d4a843;
   --ff-body: 'Roboto', Arial, sans-serif;
   --radius: 8px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-sm: 0 1px 3px rgba(30,58,138,0.06);
+  --shadow-md: 0 4px 16px rgba(30,58,138,0.08);
+  --shadow-lg: 0 8px 32px rgba(30,58,138,0.10);
   --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -50,7 +50,7 @@ body {
 
 /* ── Top Navigation Bar ── */
 .top-bar {
-  background: var(--clr-primary);
+  background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%);
   padding: 10px 24px;
   display: flex;
   justify-content: space-between;
@@ -58,7 +58,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 2px 12px rgba(30,58,138,0.25);
 }
 
 .top-bar-left {
@@ -71,7 +71,7 @@ body {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 2px solid var(--clr-accent);
+  border: 2px solid rgba(255,255,255,0.6);
   object-fit: cover;
 }
 
@@ -129,19 +129,20 @@ body {
 
 /* ── Invoice Header ── */
 .invoice-header {
-  background: var(--clr-primary);
-  color: #ffffff;
+  background: #ffffff;
+  color: #1e3a8a;
   padding: 24px 30px;
   display: flex;
   align-items: center;
   gap: 20px;
+  border-bottom: 2px solid #cbd5e1;
 }
 
 .header-logo {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 3px solid var(--clr-accent);
+  border: 3px solid rgba(255,255,255,0.5);
   object-fit: cover;
   flex-shrink: 0;
   transition: var(--transition);
@@ -186,13 +187,13 @@ body {
 
 .header-contact .label {
   font-weight: 500;
-  color: var(--clr-accent-light);
+  color: #0ea5e9;
   display: inline;
 }
 
 /* ── GST Invoice Label ── */
 .gst-label-bar {
-  background: var(--clr-accent);
+  background: #0ea5e9;
   color: #ffffff;
   text-align: center;
   padding: 6px 0;
@@ -210,7 +211,7 @@ body {
   gap: 18px;
   align-items: end;
   border-bottom: 2px solid var(--clr-border);
-  background: #fafbfc;
+  background: #f8faff;
 }
 
 .field-group {
@@ -252,7 +253,7 @@ body {
 
 /* ── Section Titles ── */
 .section-title {
-  background: var(--clr-primary);
+  background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%);
   color: #ffffff;
   padding: 8px 16px;
   font-size: 0.85rem;
@@ -288,7 +289,7 @@ body {
 }
 
 .data-table thead th {
-  background: var(--clr-accent);
+  background: #0ea5e9;
   color: #ffffff;
   padding: 8px 10px;
   text-align: center;
@@ -296,7 +297,7 @@ body {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border: 1px solid var(--clr-border);
+  border: 1px solid #0284c7;
   white-space: nowrap;
 }
 
@@ -312,7 +313,7 @@ body {
 }
 
 .data-table tbody tr:hover {
-  background: #e8f4f8;
+  background: #e0f2fe;
 }
 
 .data-table input,
@@ -337,15 +338,39 @@ body {
   font-size: 0.78rem;
 }
 
+.data-table input[type="time"] {
+  font-size: 0.78rem;
+}
+
+/* Date + Time cell layout */
+.datetime-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+}
+
+.datetime-cell input[type="date"],
+.datetime-cell input[type="time"] {
+  width: 100%;
+  text-align: center;
+  font-size: 0.78rem;
+  padding: 1px 2px;
+}
+
+.datetime-cell input[type="time"] {
+  border-top: 1px dashed var(--clr-border-light) !important;
+}
+
 .data-table .total-row {
-  background: var(--clr-primary) !important;
+  background: linear-gradient(135deg, #1e3a8a 0%, #0c4a6e 100%) !important;
   color: #ffffff;
   font-weight: 700;
 }
 
 .data-table .total-row td {
   padding: 8px 10px;
-  border-color: var(--clr-primary);
+  border-color: #1e3a8a;
 }
 
 .data-table .remove-row-btn {
@@ -384,7 +409,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px 40px;
-  background: #fafbfc;
+  background: #f8faff;
 }
 
 .travel-field {
@@ -493,7 +518,7 @@ body {
 }
 
 .billing-row.total-final {
-  background: var(--clr-primary);
+  background: linear-gradient(135deg, #1e3a8a 0%, #0c4a6e 100%);
   color: #ffffff;
   padding: 12px 16px;
 }
@@ -511,14 +536,14 @@ body {
 }
 
 .billing-row.gst-row {
-  background: #f0fdf4;
+  background: #f1f5f9;
 }
 
 .billing-row.gst-row select {
   width: 70px;
   text-align: center;
   font-weight: 600;
-  color: var(--clr-accent);
+  color: #0ea5e9;
   cursor: pointer;
 }
 
@@ -570,7 +595,7 @@ body {
 
 .footer-tagline {
   text-align: center;
-  background: var(--clr-accent);
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
   color: #ffffff;
   padding: 10px 0;
   font-size: 0.85rem;
@@ -663,7 +688,7 @@ body {
 }
 
 .history-panel-header {
-  background: var(--clr-primary);
+  background: linear-gradient(135deg, #1e3a8a 0%, #0c4a6e 100%);
   color: #ffffff;
   padding: 16px 20px;
   display: flex;
@@ -707,8 +732,8 @@ body {
 }
 
 .history-item:hover {
-  background: #f0f7ff;
-  border-color: var(--clr-accent);
+  background: #f1f5f9;
+  border-color: #0ea5e9;
   transform: translateX(-3px);
 }
 
@@ -826,7 +851,7 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 3px solid var(--clr-accent);
+  border: 3px solid #0ea5e9;
   object-fit: cover;
   background: var(--clr-bg);
 }

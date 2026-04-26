@@ -1,9 +1,10 @@
 /* ============================================
    SARKAR TRAVEL AGENCY — Print Styles
-   Forces entire invoice onto a single A4 page
+   Landscape A4 — single page fit
    ============================================ */
 
 @media print {
+
   /* Hide non-printable elements */
   .top-bar,
   .actions-bar,
@@ -15,7 +16,7 @@
     display: none !important;
   }
 
-  /* Reset page for single page fit */
+  /* Force colors */
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -33,6 +34,7 @@
 
   .app-container {
     max-width: 100% !important;
+    width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
   }
@@ -40,13 +42,17 @@
   .invoice-card {
     box-shadow: none !important;
     border-radius: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
-  /* ── Compact Header ── */
+  /* ── Header ── */
   .invoice-header {
-    background: #1a2a4a !important;
-    padding: 10px 16px !important;
-    gap: 12px !important;
+    background: #fdfdfd !important;
+    color: #1e3a8a !important;
+    padding: 10px 20px !important;
+    gap: 14px !important;
+    border-bottom: 2px solid #cbd5e1 !important;
   }
 
   .header-logo {
@@ -67,17 +73,17 @@
     line-height: 1.5 !important;
   }
 
-  /* ── Compact GST Label ── */
+  /* ── GST Label ── */
   .gst-label-bar {
-    background: #1a6b6b !important;
+    background: #0ea5e9 !important;
     padding: 3px 0 !important;
     font-size: 0.8rem !important;
     letter-spacing: 2px !important;
   }
 
-  /* ── Compact Customer Bar ── */
+  /* ── Customer Bar ── */
   .customer-bar {
-    padding: 6px 16px !important;
+    padding: 6px 20px !important;
     gap: 10px !important;
   }
 
@@ -88,26 +94,26 @@
   .field-group input {
     font-size: 0.75rem !important;
     padding: 2px 1px !important;
-    min-width: 70px !important;
+    min-width: 80px !important;
   }
 
   .field-group input.wide {
-    min-width: 140px !important;
+    min-width: 160px !important;
   }
 
-  /* ── Compact Travel Details ── */
+  /* ── Travel Details ── */
   .travel-details {
-    border-bottom: 1px solid #222 !important;
+    border-bottom: 1px solid #cbd5e1 !important;
   }
 
   .travel-fields {
-    padding: 4px 16px 6px !important;
-    gap: 2px 20px !important;
+    padding: 4px 20px 6px !important;
+    gap: 2px 30px !important;
   }
 
   .travel-field label {
     font-size: 0.6rem !important;
-    min-width: 90px !important;
+    min-width: 95px !important;
   }
 
   .travel-field input {
@@ -120,57 +126,67 @@
     font-size: 0.7rem !important;
   }
 
-  /* ── Compact Section Titles ── */
+  /* ── Section Titles ── */
   .section-title {
-    background: #1a2a4a !important;
-    padding: 3px 10px !important;
+    background: #1e3a8a !important;
+    padding: 3px 12px !important;
     font-size: 0.65rem !important;
   }
 
-  /* ── Compact Tables ── */
+  /* ── Tables — use full landscape width ── */
   .data-table {
-    font-size: 0.65rem !important;
+    font-size: 0.7rem !important;
+    width: 100% !important;
   }
 
   .data-table thead th {
-    background: #1a6b6b !important;
+    background: #0ea5e9 !important;
     color: #ffffff !important;
-    padding: 2px 3px !important;
-    font-size: 0.55rem !important;
+    padding: 3px 4px !important;
+    font-size: 0.58rem !important;
   }
 
   .data-table tbody td {
-    padding: 1px 3px !important;
-    border: 1px solid #333 !important;
+    padding: 2px 4px !important;
+    border: 1px solid #cbd5e1 !important;
   }
 
   .data-table input,
   .data-table select {
-    font-size: 0.62rem !important;
+    font-size: 0.65rem !important;
     padding: 0 !important;
   }
 
-  .data-table input[type="date"] {
-    font-size: 0.55rem !important;
+  .data-table input[type="date"],
+  .data-table input[type="time"] {
+    font-size: 0.58rem !important;
+  }
+
+  .datetime-cell {
+    gap: 1px !important;
+  }
+
+  .datetime-cell input[type="time"] {
+    border-top: 1px dashed #aaa !important;
   }
 
   .data-table .total-row {
-    background: #1a2a4a !important;
+    background: #1e3a8a !important;
     color: #ffffff !important;
   }
 
   .data-table .total-row td {
-    padding: 2px 6px !important;
-    border-color: #1a2a4a !important;
+    padding: 3px 6px !important;
+    border-color: #1e3a8a !important;
   }
 
   .data-table tbody tr:nth-child(even) {
-    background: #f0f2f5 !important;
+    background: #f1f5f9 !important;
   }
 
-  /* ── Compact Billing ── */
+  /* ── Billing ── */
   .billing-section {
-    padding: 0 16px 8px !important;
+    padding: 0 20px 6px !important;
   }
 
   .billing-box {
@@ -199,7 +215,7 @@
   }
 
   .billing-row.total-final {
-    background: #1a2a4a !important;
+    background: #1e3a8a !important;
     color: #ffffff !important;
     padding: 4px 10px !important;
   }
@@ -215,26 +231,26 @@
   }
 
   .billing-row.gst-row {
-    background: #f0fdf4 !important;
+    background: #f1f5f9 !important;
   }
 
-  /* ── Compact Footer ── */
+  /* ── Footer ── */
   .invoice-footer {
-    padding: 8px 16px 0 !important;
-    border-top: 1px solid #222 !important;
+    padding: 6px 20px 0 !important;
+    border-top: 1px solid #cbd5e1 !important;
   }
 
   .signatures {
-    margin-bottom: 8px !important;
+    margin-bottom: 6px !important;
   }
 
   .sig-block {
-    width: 140px !important;
+    width: 150px !important;
   }
 
   .sig-line {
-    margin-top: 25px !important;
-    border-top: 1px solid #222 !important;
+    margin-top: 20px !important;
+    border-top: 1px solid #1e3a8a !important;
     margin-bottom: 3px !important;
   }
 
@@ -248,16 +264,17 @@
   }
 
   .footer-tagline {
-    background: #1a6b6b !important;
+    background: #0ea5e9 !important;
     color: #ffffff !important;
     padding: 4px 0 !important;
     font-size: 0.6rem !important;
     letter-spacing: 2px !important;
-    margin: 0 -16px 0 !important;
+    margin: 0 -20px 0 !important;
   }
 
   /* ── Make inputs look like plain text ── */
-  input, select {
+  input,
+  select {
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
@@ -267,12 +284,12 @@
 
   .customer-bar input,
   .travel-field input {
-    border-bottom: 1px solid #555 !important;
+    border-bottom: 1px solid #cbd5e1 !important;
   }
 
-  /* ── Force single page ── */
+  /* ── Landscape A4 single page ── */
   @page {
-    margin: 4mm;
-    size: A4 portrait;
+    margin: 5mm;
+    size: A4 landscape;
   }
 }

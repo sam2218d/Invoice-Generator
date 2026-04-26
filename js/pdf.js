@@ -1,6 +1,6 @@
 /* ============================================
    SARKAR TRAVEL AGENCY — PDF Generation
-   Forces single A4 page output
+   Landscape A4 output with optimized spacing
    ============================================ */
 
 function generatePDF() {
@@ -24,24 +24,24 @@ function generatePDF() {
   const noPrintEls = document.querySelectorAll('.remove-row-btn, .section-title button, .no-print');
   noPrintEls.forEach(el => el.style.display = 'none');
 
-  // Temporarily apply compact print styles for PDF capture
+  // Temporarily apply compact styles for PDF capture
   invoice.style.fontSize = '9px';
-  document.querySelectorAll('.invoice-header').forEach(el => el.style.padding = '10px 16px');
+  document.querySelectorAll('.invoice-header').forEach(el => el.style.padding = '12px 20px');
   document.querySelectorAll('.header-logo').forEach(el => { el.style.width = '50px'; el.style.height = '50px'; });
-  document.querySelectorAll('.customer-bar').forEach(el => el.style.padding = '6px 16px');
-  document.querySelectorAll('.section-title').forEach(el => el.style.padding = '3px 10px');
-  document.querySelectorAll('.data-table thead th').forEach(el => el.style.padding = '2px 3px');
-  document.querySelectorAll('.data-table tbody td').forEach(el => el.style.padding = '1px 3px');
-  document.querySelectorAll('.billing-row').forEach(el => el.style.padding = '2px 10px');
-  document.querySelectorAll('.billing-section').forEach(el => el.style.padding = '0 16px 8px');
-  document.querySelectorAll('.invoice-footer').forEach(el => el.style.padding = '8px 16px 0');
-  document.querySelectorAll('.sig-line').forEach(el => el.style.marginTop = '25px');
+  document.querySelectorAll('.customer-bar').forEach(el => el.style.padding = '8px 20px');
+  document.querySelectorAll('.section-title').forEach(el => el.style.padding = '4px 14px');
+  document.querySelectorAll('.data-table thead th').forEach(el => el.style.padding = '4px 5px');
+  document.querySelectorAll('.data-table tbody td').forEach(el => el.style.padding = '3px 5px');
+  document.querySelectorAll('.billing-row').forEach(el => el.style.padding = '3px 10px');
+  document.querySelectorAll('.billing-section').forEach(el => el.style.padding = '2px 20px 8px');
+  document.querySelectorAll('.invoice-footer').forEach(el => el.style.padding = '8px 20px 0');
+  document.querySelectorAll('.sig-line').forEach(el => el.style.marginTop = '20px');
   document.querySelectorAll('.signatures').forEach(el => el.style.marginBottom = '8px');
-  document.querySelectorAll('.travel-fields').forEach(el => el.style.padding = '4px 16px 6px');
-  document.querySelectorAll('.footer-tagline').forEach(el => { el.style.padding = '4px 0'; el.style.margin = '0 -16px 0'; });
+  document.querySelectorAll('.travel-fields').forEach(el => el.style.padding = '6px 20px 8px');
+  document.querySelectorAll('.footer-tagline').forEach(el => { el.style.padding = '4px 0'; el.style.margin = '0 -20px 0'; });
 
   const options = {
-    margin: [2, 2, 2, 2],
+    margin: [4, 4, 4, 4],
     filename: filename,
     image: { type: 'jpeg', quality: 0.95 },
     html2canvas: {
@@ -53,10 +53,12 @@ function generatePDF() {
     jsPDF: {
       unit: 'mm',
       format: 'a4',
-      orientation: 'portrait',
+      orientation: 'landscape',
     },
     pagebreak: { mode: ['avoid-all'] },
   };
+
+  // Note: PDF uses landscape orientation directly (no CSS rotation needed)
 
   html2pdf()
     .set(options)

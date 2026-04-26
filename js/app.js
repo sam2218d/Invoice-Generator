@@ -78,19 +78,18 @@ function addVehicleRow(data = null) {
         <option value="">Select</option>
         <option value="Wagon R" ${data?.vehicleType === 'Wagon R' ? 'selected' : ''}>Wagon R</option>
         <option value="Swift" ${data?.vehicleType === 'Swift' ? 'selected' : ''}>Swift</option>
+        <option value="Swift Dzire" ${data?.vehicleType === 'Swift Dzire' ? 'selected' : ''}>Swift Dzire</option>
         <option value="Ertiga" ${data?.vehicleType === 'Ertiga' ? 'selected' : ''}>Ertiga</option>
-        <option value="Innova" ${data?.vehicleType === 'Innova' ? 'selected' : ''}>Innova</option>
         <option value="Innova Crysta" ${data?.vehicleType === 'Innova Crysta' ? 'selected' : ''}>Innova Crysta</option>
         <option value="Hycross" ${data?.vehicleType === 'Hycross' ? 'selected' : ''}>Hycross</option>
         <option value="Fortuner" ${data?.vehicleType === 'Fortuner' ? 'selected' : ''}>Fortuner</option>
-        <option value="Tempo Traveller" ${data?.vehicleType === 'Tempo Traveller' ? 'selected' : ''}>Tempo Traveller</option>
-        <option value="Bus" ${data?.vehicleType === 'Bus' ? 'selected' : ''}>Bus</option>
+        <option value="Scorpio N" ${data?.vehicleType === 'Scorpio N' ? 'selected' : ''}>Scorpio N</option>
         <option value="Other" ${data?.vehicleType === 'Other' ? 'selected' : ''}>Other</option>
       </select>
     </td>
     <td><input type="text" class="v-driver" placeholder="Driver" value="${data?.driver || ''}"></td>
-    <td><input type="date" class="v-start-date" value="${data?.startDate || ''}"></td>
-    <td><input type="date" class="v-end-date" value="${data?.endDate || ''}"></td>
+    <td><div class="datetime-cell"><input type="date" class="v-start-date" value="${data?.startDate || ''}"><input type="time" class="v-start-time" value="${data?.startTime || ''}"></div></td>
+    <td><div class="datetime-cell"><input type="date" class="v-end-date" value="${data?.endDate || ''}"><input type="time" class="v-end-time" value="${data?.endTime || ''}"></div></td>
     <td><input type="number" class="v-start-km" placeholder="0" min="0" value="${data?.startKm || ''}"></td>
     <td><input type="number" class="v-end-km" placeholder="0" min="0" value="${data?.endKm || ''}"></td>
     <td class="v-total-km font-bold">0</td>
@@ -120,6 +119,7 @@ function renumberVehicleRows() {
 
 function recalcVehicleTotals() {
   let totalKm = 0;
+  let totalDays = 0;
   const rows = document.querySelectorAll('#vehicle-tbody tr');
 
   rows.forEach(row => {
@@ -129,6 +129,19 @@ function recalcVehicleTotals() {
     const totalCell = row.querySelector('.v-total-km');
     if (totalCell) totalCell.textContent = rowTotal.toLocaleString('en-IN');
     totalKm += rowTotal;
+
+    // Calculate days for this vehicle row
+    const startDateStr = row.querySelector('.v-start-date')?.value;
+    const endDateStr = row.querySelector('.v-end-date')?.value;
+    if (startDateStr && endDateStr) {
+      const startDate = new Date(startDateStr);
+      const endDate = new Date(endDateStr);
+      if (!isNaN(startDate) && !isNaN(endDate) && endDate >= startDate) {
+        const diffTime = endDate.getTime() - startDate.getTime();
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1; // inclusive
+        totalDays += diffDays;
+      }
+    }
   });
 
   const grandTotalEl = document.getElementById('vehicle-total-km');
@@ -137,6 +150,10 @@ function recalcVehicleTotals() {
   // Auto-fill "Per KM" quantity in charges
   const perKmQty = document.getElementById('charge-perkm-qty');
   if (perKmQty) perKmQty.value = totalKm;
+
+  // Auto-fill "Per Day Price" quantity with total days from all vehicles
+  const perDayQty = document.getElementById('charge-perday-qty');
+  if (perDayQty) perDayQty.value = totalDays;
 
   recalcCharges();
 }
@@ -155,6 +172,7 @@ function recalcCharges() {
       const qty = parseFloat(qtyInput.value) || 0;
       const rate = parseFloat(rateInput.value) || 0;
       const amount = qty * rate;
+
       amountCell.textContent = amount > 0 ? '₹ ' + amount.toLocaleString('en-IN', { minimumFractionDigits: 2 }) : '₹ 0.00';
       amountCell.dataset.value = amount;
       subtotal += amount;
@@ -181,16 +199,18 @@ function recalcBilling(subtotal) {
   const advanceInput = document.getElementById('advance-input');
 
   const gstPercent = parseFloat(gstSelect?.value) || 0;
-  const discount = parseFloat(discountInput?.value) || 0;
+  const discountPercent = parseFloat(discountInput?.value) || 0;
   const advance = parseFloat(advanceInput?.value) || 0;
 
   const gstAmount = subtotal * (gstPercent / 100);
   const totalPrice = subtotal + gstAmount;
-  const finalTotal = totalPrice - discount - advance;
+  const discountAmount = totalPrice * (discountPercent / 100);
+  const finalTotal = totalPrice - discountAmount - advance;
 
   document.getElementById('billing-subtotal').textContent = '₹ ' + subtotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
   document.getElementById('billing-gst-amount').textContent = '₹ ' + gstAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 });
   document.getElementById('billing-total').textContent = '₹ ' + totalPrice.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+  document.getElementById('billing-discount-amount').textContent = '₹ ' + discountAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 });
   document.getElementById('billing-final').textContent = '₹ ' + finalTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
 }
 
@@ -200,11 +220,16 @@ function recalcAll() {
 
 /* ── Event Binding ── */
 function bindEvents() {
-  // Vehicle table input changes
+  // Vehicle table input changes (KM and date changes)
   const vehicleTable = document.getElementById('vehicle-table');
   if (vehicleTable) {
     vehicleTable.addEventListener('input', (e) => {
       if (e.target.matches('.v-start-km, .v-end-km')) {
+        recalcVehicleTotals();
+      }
+    });
+    vehicleTable.addEventListener('change', (e) => {
+      if (e.target.matches('.v-start-date, .v-end-date')) {
         recalcVehicleTotals();
       }
     });
@@ -280,7 +305,9 @@ function collectInvoiceData() {
       vehicleType: row.querySelector('.v-type')?.value || '',
       driver: row.querySelector('.v-driver')?.value || '',
       startDate: row.querySelector('.v-start-date')?.value || '',
+      startTime: row.querySelector('.v-start-time')?.value || '',
       endDate: row.querySelector('.v-end-date')?.value || '',
+      endTime: row.querySelector('.v-end-time')?.value || '',
       startKm: row.querySelector('.v-start-km')?.value || '',
       endKm: row.querySelector('.v-end-km')?.value || '',
     });
