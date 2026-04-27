@@ -22,14 +22,16 @@
   --clr-gold: #d4a843;
   --ff-body: 'Roboto', Arial, sans-serif;
   --radius: 8px;
-  --shadow-sm: 0 1px 3px rgba(30,58,138,0.06);
-  --shadow-md: 0 4px 16px rgba(30,58,138,0.08);
-  --shadow-lg: 0 8px 32px rgba(30,58,138,0.10);
+  --shadow-sm: 0 1px 3px rgba(30, 58, 138, 0.06);
+  --shadow-md: 0 4px 16px rgba(30, 58, 138, 0.08);
+  --shadow-lg: 0 8px 32px rgba(30, 58, 138, 0.10);
   --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ── Reset & Base ── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -58,7 +60,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 12px rgba(30,58,138,0.25);
+  box-shadow: 0 2px 12px rgba(30, 58, 138, 0.25);
 }
 
 .top-bar-left {
@@ -71,7 +73,7 @@ body {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.6);
+  border: 2px solid rgba(255, 255, 255, 0.6);
   object-fit: cover;
 }
 
@@ -91,8 +93,8 @@ body {
 .top-bar-actions a,
 .top-bar-actions button {
   color: #ffffff;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 6px 14px;
   border-radius: var(--radius);
   font-family: var(--ff-body);
@@ -107,8 +109,8 @@ body {
 
 .top-bar-actions a:hover,
 .top-bar-actions button:hover {
-  background: rgba(255,255,255,0.2);
-  border-color: rgba(255,255,255,0.4);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-1px);
 }
 
@@ -142,7 +144,7 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 3px solid rgba(255,255,255,0.5);
+  border: 3px solid rgba(255, 255, 255, 0.5);
   object-fit: cover;
   flex-shrink: 0;
   transition: var(--transition);
@@ -266,9 +268,9 @@ body {
 }
 
 .section-title button {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 3px 12px;
   border-radius: 4px;
   font-family: var(--ff-body);
@@ -278,7 +280,7 @@ body {
 }
 
 .section-title button:hover {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* ── Tables ── */
@@ -542,7 +544,7 @@ body {
 .billing-row.total-final {
   background: linear-gradient(135deg, #1e3a8a 0%, #0c4a6e 100%);
   color: #ffffff;
-  padding: 12px 16px;
+  padding: 5px 16px;
 }
 
 .billing-row.total-final label {
@@ -699,7 +701,7 @@ body {
   width: 400px;
   height: 100vh;
   background: var(--clr-card);
-  box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
   z-index: 200;
   transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
@@ -790,7 +792,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 190;
   opacity: 0;
   pointer-events: none;
@@ -886,7 +888,9 @@ body {
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  html { font-size: 13px; }
+  html {
+    font-size: 13px;
+  }
 
   .invoice-header {
     flex-direction: column;
@@ -989,9 +993,26 @@ body {
 }
 
 /* ── Utility ── */
-.text-right { text-align: right; }
-.text-left { text-align: left !important; }
-.text-center { text-align: center; }
-.font-bold { font-weight: 700; }
-.mt-1 { margin-top: 8px; }
-.mb-1 { margin-bottom: 8px; }
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.mt-1 {
+  margin-top: 8px;
+}
+
+.mb-1 {
+  margin-bottom: 8px;
+}

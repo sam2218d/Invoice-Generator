@@ -246,7 +246,7 @@
   .billing-row.total-final {
     background: #1e3a8a !important;
     color: #ffffff !important;
-    padding: 3px 8px !important;
+    padding: 4.6px 16px !important;
   }
 
   .billing-row.total-final label {
